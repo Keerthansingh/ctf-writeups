@@ -81,6 +81,6 @@ I leveraged this capability to pop a root shell with a quick one-liner:
 
 Running `whoami` confirmed I was running as `root`. I navigated to the root directory and grabbed the final flag:
 
-![Root shell and reading root.txt](/assets/img/8.png)
+![Root shell and reading root.txt](/ctf-writeups/assets/img/8.png)
 
 * **Root Flag**: `33100bb86f58e26315ba29edc2e8d86e`
