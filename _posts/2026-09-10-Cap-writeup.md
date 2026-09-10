@@ -16,7 +16,8 @@ I started off running a standard Nmap scan against the target IP to see what por
 ```bash
 nmap -sVC -p- 10.129.93.39
 ```
-
+ ![Nmap scan](/assets/img/1.jpg)
+ 
 The scan came back with **3 open TCP ports**:
 * **Port 21**: FTP (`vsftpd 3.0.3`)
 * **Port 22**: SSH (`OpenSSH 8.2p1`)
