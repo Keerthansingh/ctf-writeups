@@ -6,4 +6,4 @@ categories: [ctf]
 
 ## Recon 
 
- what nmap found
+what nmap found
