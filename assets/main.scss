@@ -118,4 +118,13 @@ pre, code {
   color: #8b949e;
 }
 
+a:hover {
+  color: #79c0ff !important;
+  text-decoration: underline;
+}
+
+.post-list a:hover,
+.post-title a:hover {
+  color: #79c0ff !important;
+}
 
