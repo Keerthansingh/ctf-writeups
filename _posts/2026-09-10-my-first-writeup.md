@@ -4,6 +4,6 @@ date: 2026-09-10
 categories: [ctf] 
 ---
 
- ## Recon 
+## Recon 
 
  what nmap found
