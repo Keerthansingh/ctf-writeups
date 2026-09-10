@@ -1,3 +1,7 @@
 title: My CTF Writeups
 description: Walkthroughs of CTF machines and challenges
 theme: minima
+minima:
+  skin: dark
+  social_links:
+    - { platform: github, user_url: "https://github.com/Keerthansingh" }
