@@ -89,6 +89,25 @@ pre, code {
   font-size: 40px;
 }
 
+.footer-col-1 {
+  display: none;
+}
+
+.footer-col-2 {
+  display: none;
+}
+
+.footer-col-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-col-3 {
+  width: 100%;
+  text-align: center;
+  float: none;
+}
+
 .rss-subscribe { display: none; }
 .post-meta {
   margin-bottom: 30px;
