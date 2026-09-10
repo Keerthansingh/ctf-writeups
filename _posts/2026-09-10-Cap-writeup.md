@@ -33,7 +33,7 @@ Popping open the web browser to `http://10.129.93.39`, I landed on the Security 
 
 Noticing the `/1` at the end of the URL, I wondered if it was vulnerable to IDOR. I manually changed the URL path to `/data/0`. Sure enough, it loaded another user's private scan report containing 72 captured packets! The application didn't validate whether the logged-in user actually owned the requested ID, letting me browse other users' scans freely.
 
-![Accessing another user's data via /data/0](/assets/img/3.jpg)
+![Accessing another  /data/0](/assets/img/3.png)
 
 ---
 
@@ -58,7 +58,7 @@ ssh nathan@10.129.93.39
 Once inside, I grabbed the user flag right away:
 * **User Flag**: `7074363d194f7b877e87a5cee7c52499`
 
-![SSH access and reading user.txt](/assets/img/6.png)
+![SSH access and reading user.txt](/assets/img/6.jpg)
 
 ---
 
@@ -81,6 +81,6 @@ I leveraged this capability to pop a root shell with a quick one-liner:
 
 Running `whoami` confirmed I was running as `root`. I navigated to the root directory and grabbed the final flag:
 
-![Root shell and reading root.txt](/assets/img/8.jpg)
+![Root shell and reading root.txt](/assets/img/8.png)
 
 * **Root Flag**: `33100bb86f58e26315ba29edc2e8d86e`
