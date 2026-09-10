@@ -16,7 +16,7 @@ I started off running a standard Nmap scan against the target IP to see what por
 ```bash
 nmap -sVC -p- 10.129.93.39
 ```
- ![Nmap scan](/assets/img/1.jpg)
+ ![Nmap scan](/ctf-writeups/assets/img/1.jpg)
  
 The scan came back with **3 open TCP ports**:
 * **Port 21**: FTP (`vsftpd 3.0.3`)
@@ -29,11 +29,11 @@ The scan came back with **3 open TCP ports**:
 
 Popping open the web browser to `http://10.129.93.39`, I landed on the Security Dashboard. Clicking around the sidebar, I triggered a feature called "Security Snapshot," which ran a quick packet capture and redirected my browser to `http://10.129.93.39/data/1`. 
 
-![Security Snapshot sidebar option](/assets/img/2.png)
+![Security Snapshot sidebar option](/ctf-writeups/assets/img/2.png)
 
 Noticing the `/1` at the end of the URL, I wondered if it was vulnerable to IDOR. I manually changed the URL path to `/data/0`. Sure enough, it loaded another user's private scan report containing 72 captured packets! The application didn't validate whether the logged-in user actually owned the requested ID, letting me browse other users' scans freely.
 
-![Accessing another  /data/0](/assets/img/3.png)
+![Accessing another  /data/0](/ctf-writeups/assets/img/3.png)
 
 ---
 
@@ -41,9 +41,9 @@ Noticing the `/1` at the end of the URL, I wondered if it was vulnerable to IDOR
 
 Inside the scan data at `/data/0`, there was an option to download a packet capture file named `0.pcap`. I pulled it down and opened it up in Wireshark to see what was hidden inside.
 
-![FTP USER and PASS captured in Wireshark](/assets/img/4.jpg)
+![FTP USER and PASS captured in Wireshark](/ctf-writeups/assets/img/4.jpg)
 
-![Wireshark stream confirming the credentials](/assets/img/5.jpg)
+![Wireshark stream confirming the credentials](/ctf-writeups/assets/img/5.jpg)
 
 Filtering through the stream, I spotted unencrypted **FTP** traffic. Following the TCP stream revealed a login attempt where user `nathan` sent their password in cleartext:
 * **Username**: `nathan`
@@ -58,7 +58,7 @@ ssh nathan@10.129.93.39
 Once inside, I grabbed the user flag right away:
 * **User Flag**: `7074363d194f7b877e87a5cee7c52499`
 
-![SSH access and reading user.txt](/assets/img/6.jpg)
+![SSH access and reading user.txt](/ctf-writeups/assets/img/6.jpg)
 
 ---
 
@@ -69,7 +69,7 @@ To figure out how to escalate to root, I checked for files with special Linux ca
 ```bash
 getcap -r / 2>/dev/null
 ```
-![getcap output showing python3.8 capabilities](/assets/img/7.png)
+![getcap output showing python3.8 capabilities](/ctf-writeups/assets/img/7.png)
 
 The output flagged something very interesting: `/usr/bin/python3.8` had the `cap_setuid` capability enabled (`cap_setuid,cap_net_bind_service+eip`). This means the python binary can change its user ID during execution, effectively allowing a normal user to spawn a root-level process.
 
