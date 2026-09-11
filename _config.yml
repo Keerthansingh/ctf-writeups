@@ -5,4 +5,7 @@ minima:
   skin: dark
   social_links: 
     - { platform: github, user_url: "https://github.com/Keerthansingh" }
-header_pages: - blog.md - writeups.md - about.md 
+header_pages:
+  - blog.md
+  - writeups.md
+  - about.md
